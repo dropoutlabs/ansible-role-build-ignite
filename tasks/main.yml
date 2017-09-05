@@ -1,0 +1,33 @@
+---
+# tasks file for ignite
+- name: get Ignite
+  get_url:
+    url: http://apache-mirror.rbc.ru/pub/apache//ignite/2.1.0/apache-ignite-2.1.0-src.zip
+    dest: /tmp
+
+- apt:
+    name: unzip
+    state: present
+
+- name: unarchive Ignite
+  unarchive:
+    src: /tmp/apache-ignite-2.1.0-src.zip
+    dest: /tmp
+    remote_src: yes
+
+- command: mv /tmp/apache-ignite-2.1.0-src "{{ IGNITE_HOME }}"
+
+- name: build Ignite
+  command: mvn clean package -DskipTests
+  args:
+    chdir: "{{ IGNITE_HOME }}"
+  environment:
+    JAVA_HOME: /usr/lib/jvm/java-8-oracle
+  register: out
+
+- debug: var=out.stdout_lines
+
+- template:
+    src: ignite.sh.j2
+    dest: /etc/profile.d/ignite.sh
+

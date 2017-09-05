@@ -1,0 +1,3 @@
+---
+# vars file for ignite
+IGNITE_HOME: "/opt/ignite"
