@@ -18,14 +18,14 @@
 - command: mv /tmp/apache-ignite-2.1.0-src "{{ IGNITE_HOME }}"
 
 - name: build Ignite
-  command: mvn clean package -DskipTests
+  command: /opt/apache-maven-3.5.0/bin/mvn clean package -DskipTests
   args:
     chdir: "{{ IGNITE_HOME }}"
   environment:
     JAVA_HOME: /usr/lib/jvm/java-8-oracle
   register: out
 
-- debug: var=out.stdout_lines
+# - debug: var=out.stdout_lines
 
 - template:
     src: ignite.sh.j2
