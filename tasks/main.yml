@@ -2,7 +2,7 @@
 # tasks file for ignite
 - name: get Ignite
   get_url:
-    url: http://apache-mirror.rbc.ru/pub/apache//ignite/2.1.0/apache-ignite-2.1.0-src.zip
+    url: https://archive.apache.org/dist/ignite/2.1.0/apache-ignite-2.1.0-src.zip
     dest: /tmp
 
 - apt:
