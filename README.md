@@ -17,7 +17,7 @@ How to use your role:
 
     - hosts: ignites
       roles:
-         - { role: dropoutlabs.ignite }
+         - { role: dropoutlabs.build-ignite }
 
 License
 -------
